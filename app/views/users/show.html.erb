@@ -1,0 +1,15 @@
+<% provide :title, "Users" %>
+
+<div class="col-md-6 col-md-offset-3">
+  <h1 class="page-header">Profile</h1><br />
+  <div class="panel panel-primary">
+    <div class="panel-heading"><%= @user.name.capitalize %></div>
+    <div class="panel-body">
+      <div><label>Contact: </label>
+      <%= @user.email %></div>
+
+      <div><label>Sign up at: </label>
+      <%= @user.signed_up_at %></div>
+    </div>
+  </div>
+</div>
