@@ -13,7 +13,17 @@
     <%= render "layouts/header" %>
 
     <%= render "layouts/flash_message" %>
-    <div id="content" class="row"><%= yield %></div>
+    <div id="content" class="row">
+       <%if user_signed_in?%>    
+        <%= render "layouts/menu_bar"%>
+        <div class= "col-md-7 body jumbotron">
+          <%= yield %>
+        </div>      
+        <%= render "layouts/side_bar"%>      
+      <%else%>
+        <%= yield %>
+      <%end%>
+    </div>
 
     <%= render "layouts/footer" %>
 
