@@ -1,0 +1,31 @@
+@import "bootstrap";
+
+#content {
+  margin-bottom: 20px;
+}
+
+#users {
+  overflow: hidden;
+  li {
+    padding: 0px 10px;
+    a {
+      width: 62px;
+      height: 62px;
+      margin-bottom: 10px;
+      &:first-child {
+        padding: 2px;
+        margin-top: 10px;
+        font-size: 1.2em;
+      }
+    }
+  }
+}
+
+.page-header, .alert {
+  text-align: center;
+}
+
+.error {
+  list-style: none;
+  color: #A94442;
+}
