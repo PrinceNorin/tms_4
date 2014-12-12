@@ -1,0 +1,8 @@
+<div class="container course-subject-task">
+  <%=truncate(course_subject_task.task.name,:length=>40)%>
+
+  <div class="course-subject-task-status" style="background-color: 
+    <%=course_subject_task.status? ? "silver" : "pink"%>">
+    <%=course_subject_task.status? ? "Finish" : "Training"%>
+  </div>
+</div>

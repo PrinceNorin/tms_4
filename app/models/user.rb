@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
     !enrollments.find_by_course_id(course.id).nil?
   end
 
+  def active_course_enrolled
+    enrollment=enrollments.find_by status:false
+  end
+
   def self.digest(string)
     BCrypt::Password.create string
   end

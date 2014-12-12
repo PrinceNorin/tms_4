@@ -19,7 +19,7 @@ class CoursesController < ApplicationController
 
     def enrolled_check
       unless current_user.enrolled? @course
-        message = "You are not enrolled in this course. 
+        message = "You are not enrolled in this course.
                    Please contact your suppervisor!"
         redirect_to root_path, danger: message
       end
