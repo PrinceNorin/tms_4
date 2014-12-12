@@ -1,0 +1,14 @@
+<li class="list-group-item">
+  <div class="panel panel-info">
+    <div class="panel-heading"><h3><%= course.name %></h3></div>
+    <div class="panel-body">
+      <p><%= course.description %></p>
+      <% if current_user.enrolled? course %>
+        <%= link_to "View Course Detail", course, class: "btn btn-medium btn-primary" %>
+      <% else %>
+        <p class="alert alert-warning">You are not enrolled in this course.<br/>
+        Please contact your supervisor to enroll in this course.</p>
+      <% end %>
+    </div>
+  </div>
+</li>

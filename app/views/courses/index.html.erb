@@ -1,0 +1,15 @@
+<% provide :title, "Courses" %>
+
+<h1 class="page-header">Courses</h1>
+
+<% if @courses.any? %>
+  <%= will_paginate @courses %>
+  <ul id="courses" class="list-group">
+    <%= render @courses %>
+  </ul>
+  <%= will_paginate @courses %>
+<% else %>
+  <div class="alert alert-info">
+    There is no course available right now. Please come back again later
+  </div>
+<% end %>
