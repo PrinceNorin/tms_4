@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
   
   has_secure_password
 
+  def enrolled?(course)
+    !enrollments.find_by_course_id(course.id).nil?
+  end
+
   def self.digest(string)
     BCrypt::Password.create string
   end

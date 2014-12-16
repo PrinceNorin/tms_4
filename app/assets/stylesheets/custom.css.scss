@@ -21,6 +21,30 @@
   }
 }
 
+#courses {
+  li {
+    &:hover > div {
+      @extend .panel-primary;
+      cursor: pointer;
+    }
+    h3 {
+      text-align: center;
+      text-transform: capitalize;
+    }
+    p {
+      max-height: 150px;
+      overflow-y: auto;
+    }
+  }
+}
+
+.panel {
+  @extend .panel;
+  p {
+    font-size: 1em;
+  }
+}
+
 .page-header, .alert {
   text-align: center;
 }
