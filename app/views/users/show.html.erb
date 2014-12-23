@@ -1,15 +1,39 @@
 <% provide :title, "Users" %>
-
 <div>
-  <h1 class="page-header">Profile</h1><br />
   <div class="panel panel-primary">
-    <div class="panel-heading"><%= @user.name.capitalize %></div>
+    <div class="panel-heading">
+      <h1 class="page-header">Profile</h1>
+    </div>
     <div class="panel-body">
-      <div><label>Contact: </label>
-      <%= @user.email %></div>
-
+      <div class="gravatar"><%=gravatar_for @user%></div>
+      <div><label>Name:</label><%= @user.name.capitalize %></div>
+      <div><label>Contact: </label><%= @user.email %></div>
+      <%if current_user? @user.id%>
+        <div class ="btn btn-primary btn-edit-user">
+          <%=link_to "Edit",edit_user_path(@user)%>
+        </div>
+      <%end%>
       <div><label>Sign up at: </label>
       <%= @user.signed_up_at %></div>
+      
+      <%course = @user.active_course_enrolled.course%>
+      <%unless course.nil?%>
+        <div class ="course">
+          Course: <b><%=truncate(course.name,length:30)%></b>
+          
+          <div class = "course-subject" style = "background-color: 
+            <%=course.course_subjects.unfinish_subjects.count>0 ? 
+            "silver" : "pink"%>">
+            <%=course.course_subjects.unfinish_subjects.count>0 ? "Finish" : "Training"%>
+          </div>
+
+          <div class ="pull-right">
+            start date:(<%= @user.active_course_enrolled.created_at.strftime "%d/%m/%Y"%>
+            -<%= (@user.active_course_enrolled.created_at+course.duration.day).strftime "%d/%m/%Y"%>)
+          </div>
+        </div>
+        <%= render course.course_subjects%>
+      <%end%>
     </div>
   </div>
 </div>

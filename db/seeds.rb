@@ -16,13 +16,15 @@ supervisor = Supervisor.create name: "Norin"
 # create courses sample data
 30.times do
   supervisor.courses.create name: Faker::Lorem.sentence,
-                  description: Faker::Lorem.paragraph(8)
+                  description: Faker::Lorem.paragraph(8),
+                  duration: 30
 end
 
 # create subjects sample data
 subjects = []
 4.times do
-  subject = Subject.create name: Faker::Lorem.sentence
+  subject = Subject.create  name: Faker::Lorem.sentence,
+                            instruction:Faker::Lorem.paragraph(7)
   5.times { subject.tasks.create name: Faker::Lorem.sentence }
   subjects << subject
 end
@@ -34,4 +36,11 @@ Course.all.each do |course|
   end
 end
 
-user.enrollments.create course_id: Course.first.id
+# create course_subject_tasks sample data
+CourseSubject.all.each do |course_subject|
+  course_subject.subject.tasks.each do |task|
+    course_subject.course_subject_tasks.create task_id: task.id, status: false
+  end
+end
+
+user.enrollments.create course_id: Course.first.id,status: false

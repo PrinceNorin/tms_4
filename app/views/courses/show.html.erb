@@ -6,12 +6,13 @@
   </div>
   <div class="panel panel-body">
     <p><%= @course.description %></p><hr />
-    <% if @course.course_subjects.any? %>
+    <% if @course.course_subjects.any? %>    
       <h4>Subjects in Course</h4>
       <ul class="list-group">
         <% @course.course_subjects.each do |course_subject| %>
           <li class="list-group-item">
-            <%= link_to course_subject.subject.name, "#" %>
+            <%= link_to course_subject.subject.name, course_course_subject_path(
+            course_subject.course,course_subject)%>
           </li>
         <% end %>
       </ul>

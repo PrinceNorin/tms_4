@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   resources :users, except: [:destroy]
   get "signup" => "users#new", as: :signup
 
-  resources :courses, only: [:index, :show]
+  resources :courses, only: [:index, :show] do
+    resources :course_subjects, only: [:show,:update]
+  end
+
+  resources :enrollments, only: [:create]  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
