@@ -1,0 +1,27 @@
+<% provide :title, "Supervisor | User's Profile" %>
+
+<div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h1 class="page-header">Profile</h1>
+    </div>
+    <div class="panel-body">
+      <div class="gravatar"><%= gravatar_for @user %></div>
+
+      <div><label>Name:</label>
+      <%= @user.name.capitalize %></div>
+
+      <div><label>Contact: </label>
+      <%= @user.email %></div>
+
+      <div class ="btn btn-primary btn-edit-user">
+        <%= link_to "Edit", edit_supervisor_user_path(@user) %>
+      </div>
+
+      <div><label>Sign up at: </label>
+      <%= @user.signed_up_at %></div>
+      
+      <%= render "shared/user_current_progress" %>
+    </div>
+  </div>
+</div>

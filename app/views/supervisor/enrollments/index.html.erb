@@ -1,0 +1,22 @@
+<% provide :title, "Supervisor | Enrollment's list" %>
+
+<h1 class="page-header">Enrollment's list</h1>
+
+<%= will_paginate @enrollments %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Course ID</th>
+      <th>Trainee</th>
+      <th>Enroll Date</th>
+      <th>Setting</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @enrollments %>
+  </tbody>
+</table>
+
+<%= link_to "Enroll New Trainee", new_supervisor_enrollment_path, class: "btn btn-primary" %>

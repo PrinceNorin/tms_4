@@ -1,0 +1,20 @@
+<% provide :title, "Supervisor | New Enrollment" %>
+
+<h1 class="page-header">New Enrollment</h1>
+
+<%= form_for [:supervisor, @enrollment], html: { class: "form" } do |f| %>
+  <%= render "shared/error_message", object: f.object %>
+  <div class="form-group">
+    <%= f.label :course_id, "Course" %>
+    <%= f.select :course_id, Course.all.map { |course| [course.name, course.id] },
+        { prompt: "Select Course" }, { class: "form-control" } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :user_id, "Trainee" %>
+    <%= f.select :user_id, User.trainees.map { |user| [user.name, user.id] },
+        { prompt: "Select Trainee" }, { class: "form-control" } %>
+  </div>
+
+  <div><%= f.submit "Enroll Now", class: "btn btn-primary" %></div>
+<% end %>

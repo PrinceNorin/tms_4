@@ -1,0 +1,10 @@
+<tr>
+  <td><%= subject.id %></td>
+  <td><%= link_to subject.name, supervisor_subject_path(subject) %></td>
+  <td><%= subject.tasks.count %></td>
+  <td>
+    <%= link_to "Edit", edit_supervisor_subject_path(subject) %> | 
+    <%= link_to "Delete", supervisor_subject_path(subject),
+    data: { confirm: "Are you sure?", method: :delete } %>
+  </td>
+</tr>

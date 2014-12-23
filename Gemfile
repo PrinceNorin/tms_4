@@ -26,3 +26,4 @@ gem "faker", "1.4.3", group: :development
 # Use debugger
 # gem "debugger", group: [:development, :test]
 
+gem 'tzinfo-data', platforms: [:mingw, :mswin]

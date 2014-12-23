@@ -1,0 +1,6 @@
+<% html = escape_javascript(render 'shared/finish_course', course: @course) %>
+
+$("#course_<%= @course.id %>").html("<%= html %>")
+
+<% html = escape_javascript(render "shared/subject_finish_form", course_subject: @course_subject) %>
+$("#force_subject_finish").html("<%= html %>");

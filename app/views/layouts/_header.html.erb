@@ -3,11 +3,16 @@
     <img alt = "Training System Logo" src = "/assets/logo.png" />
   </div>
   <div class = "right_head">
-    <%if user_signed_in?%>
-      <%= link_to "Welcome #{current_user.name}",current_user%> | 
-      <%= link_to "Sign Out",signout_path%>
-    <%else%>
-      <%= link_to "Sign In",signin_path%> | <%= link_to "Sign Up",signup_path%>
-    <%end%>
+    <% if user_signed_in? && current_user.supervisor? %>
+      <%= link_to "Welcome #{current_user.name}", current_user %> | 
+      <%= link_to "Sign Out", supervisor_signout_path %>
+    <% elsif user_signed_in? %>
+      <%= link_to "Welcome #{current_user.name}", current_user %> | 
+      <%= link_to "Sign Out", signout_path %>
+    <% else %>
+      <%= link_to "Sign In", signin_path %> | 
+      <%= link_to "Sign Up", signup_path %> | 
+      <%= link_to "Supervisor?", supervisor_signin_path %>
+    <% end %>
   </div>
 </header>

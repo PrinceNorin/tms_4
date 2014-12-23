@@ -1,0 +1,2 @@
+<% html = escape_javascript(render 'shared/course_finish_form', user: @user, course: @course) %>
+$("#force_finish_course").html("<%= html %>")

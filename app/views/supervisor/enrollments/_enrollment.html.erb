@@ -1,0 +1,8 @@
+<tr>
+  <td><%= enrollment.id %></td>
+  <td><%= enrollment.course.id %></td>
+  <td><%= enrollment.user.name %></td>
+  <td><%= enrollment.enrolled_at %></td>
+  <td><%= link_to "Unenroll", supervisor_enrollment_path(enrollment),
+  data: { confirm: "Are you sure?", method: :delete } %></td>
+</tr>

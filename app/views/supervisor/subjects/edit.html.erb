@@ -1,0 +1,22 @@
+<% provide :title, "Supervisor | Edit Subject" %>
+
+<h1 class="page-header">Edit Subject</h1>
+<br />
+<%= form_for [:supervisor, @subject], html: { class: "form" } do |f| %>
+  <%= render "shared/error_message", object: f.object %>
+  <div class="form-group"><%= f.label :name %>
+  <%= f.text_field :name, autofocus: true, class: "form-control" %></div>
+
+  <div class="form-group">
+    <%= f.fields_for :tasks do |task_field| %>
+      <%= task_field.label :tasks %>
+      <%= task_field.text_field :name, class: "form-control" %>
+    <% end %>
+  </div>
+
+  <div><%= f.submit "Save Subject", class: "btn btn-primary form-control" %></div>
+<% end %>
+
+<br />
+<%= link_to "Add New Task", new_supervisor_subject_task_path(@subject),
+    class: "btn btn-primary form-control" %>

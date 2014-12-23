@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141217155837) do
+ActiveRecord::Schema.define(version: 20141223062358) do
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20141217155837) do
   create_table "course_subject_tasks", force: true do |t|
     t.integer  "course_subject_id"
     t.integer  "task_id"
-    t.boolean  "status"
+    t.boolean  "status",            default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20141217155837) do
   create_table "course_subjects", force: true do |t|
     t.integer  "course_id"
     t.integer  "subject_id"
-    t.boolean  "status"
+    t.boolean  "status",     default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20141217155837) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "supervisor_id"
+    t.integer  "user_id"
     t.integer  "duration"
   end
 
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20141217155837) do
     t.integer  "course_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "status"
+    t.boolean  "status",     default: false
   end
 
   add_index "enrollments", ["course_id"], name: "index_enrollments_on_course_id", using: :btree
@@ -69,14 +69,6 @@ ActiveRecord::Schema.define(version: 20141217155837) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "instruction"
-  end
-
-  create_table "supervisors", force: true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "tasks", force: true do |t|
@@ -93,6 +85,7 @@ ActiveRecord::Schema.define(version: 20141217155837) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_digest"
+    t.boolean  "supervisor",      default: false
   end
 
 end

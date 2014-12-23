@@ -1,0 +1,18 @@
+<% provide :title, "Supervisor | Users" %>
+
+<%= will_paginate @users %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Role</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @users %>
+  </tbody>
+</table>
+
+<%= link_to "New User", new_supervisor_user_path, class: "btn btn-primary" %>

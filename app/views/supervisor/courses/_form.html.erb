@@ -1,0 +1,25 @@
+<div>
+  <h1 class="page-header"><%= header %></h1>
+  <br />
+  <%= form_for [:supervisor, @course], html: { class: "form" } do |f| %>
+    <%= render "shared/error_message", object: f.object %>
+    <div class="form-group"><%= f.label :name %>
+    <%= f.text_field :name, autofocus: true, class: "form-control" %></div>
+
+    <div class="form-group"><%= f.label :duration %>
+    <%= f.text_field :duration, class: "form-control" %></div>
+
+    <div class="form-group"><%= f.label :description %>
+    <%= f.text_area :description, class: "form-control" %></div>
+
+    <div class="form-group"><%= f.label :user_id, "Supervisor" %>
+    <%= f.select :user_id, User.supervisors.map { |user| [user.name, user.id] },
+    { prompt: "Select Supervisor" }, { class: "form-control" } %></div>
+
+    <div class="form-group checkbox-group"><%= f.label :subject %>
+      <%= f.collection_check_boxes :subject_ids, Subject.all, :id, :name %>
+    </div>
+
+    <div><%= f.submit label, class: "btn btn-primary form-control" %></div>
+  <% end %>
+</div>

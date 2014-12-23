@@ -1,0 +1,16 @@
+<% course = @user.active_course_enrolled.try(:course) %>
+<% unless course.nil? %>
+  <div class="course">
+    Course: <b><%= truncate course.name, length:30 %></b>
+    
+    <span id="course_<%= course.id %>">
+      <%= render "shared/finish_course", course: course %>
+    </span>
+
+    <div class ="pull-right">
+      Start date:(<%= @user.active_course_enrolled.created_at.strftime "%d/%m/%Y" %>
+      -<%= (@user.active_course_enrolled.created_at+course.duration.day).strftime "%d/%m/%Y"%>)
+    </div>
+  </div>
+  <%= render course.course_subjects%>
+<% end %>

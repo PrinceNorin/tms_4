@@ -1,0 +1,11 @@
+<% provide :title, "Supervisor | New Subject" %>
+
+<h1 class="page-header">New Subject</h1>
+<br />
+<%= form_for [:supervisor, @subject], html: { class: "form" } do |f| %>
+  <%= render "shared/error_message", object: f.object %>
+  <div class="form-group"><%= f.label :name %>
+  <%= f.text_field :name, autofocus: true, class: "form-control" %></div>
+
+  <div><%= f.submit "New Subject", class: "btn btn-primary form-control" %></div>
+<% end %>
