@@ -11,7 +11,10 @@ class CourseSubject < ActiveRecord::Base
 
   private
     def update_course_subject_status
-      if self.status != true && self.course_subject_tasks.unfinish_tasks.count==0
+      if status != true && 
+        course_subject_tasks.count != 0 && 
+        course_subject_tasks.unfinish_tasks.count == 0
+        
        self.update status: true
       end
     end

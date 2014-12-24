@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   
   def create
     user = User.find_by_name params[:session][:name]
-    if user && user.authenticate(params[:session][:password])
+    if user && user.authenticate(params[:session][:password]) && !user.supervisor?
       sign_in user
       remember_me? ? remember(user) : forget(user)
       redirect_back_or_to root_path, success: "You have signed in."

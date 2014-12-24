@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   attr_accessor :remember_token, :password_not_require
 
   has_many :enrollments, dependent: :destroy
-  has_many :courses, through: :enrollments
+  has_many :courses, dependent: :destroy
+  has_many :enroll_courses, through: :enrollments
   has_many :activities, dependent: :destroy
 
   before_save -> { self.email.downcase! }
@@ -14,12 +15,19 @@ class User < ActiveRecord::Base
   
   has_secure_password
 
+  scope :trainees, -> { where supervisor: false }
+  scope :supervisors, -> { where supervisor: true }
+
   def enrolled?(course)
     !enrollments.find_by_course_id(course.id).nil?
   end
 
+  def enrollment(course)
+    enrollments.find_by_course_id course.id
+  end
+
   def active_course_enrolled
-    enrollment=enrollments.find_by status:false
+    enrollments.find_by status: false
   end
 
   def self.digest(string)

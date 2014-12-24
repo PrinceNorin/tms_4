@@ -16,6 +16,21 @@ Rails.application.routes.draw do
 
   resources :enrollments, only: [:create]  
 
+  namespace :supervisor do
+    root "courses#index"
+    resources :sessions, only: [:new, :create, :destroy]
+    get "signin" => "sessions#new", as: :signin
+    get "signout" => "sessions#destroy", as: :signout
+    
+    resources :courses
+    resources :course_subjects, only: :update
+    resources :users
+    resources :enrollments, only: [:index, :new, :update, :create, :destroy]
+    resources :subjects do
+      resources :tasks, only: [:new, :create]
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
