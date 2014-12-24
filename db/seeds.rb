@@ -11,7 +11,8 @@ user = User.create name: "norin", email: "norin@example.com",
                    password: "secret", password_confirmation: "secret"
 
 # create supervisor sample data
-supervisor = Supervisor.create name: "Norin"
+supervisor = User.create name: "PrinceNorin", email: "prince@example.com",
+          password: "secret", password_confirmation: "secret", supervisor: true
 
 # create courses sample data
 30.times do

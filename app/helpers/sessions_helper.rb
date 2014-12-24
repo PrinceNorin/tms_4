@@ -43,6 +43,14 @@ module SessionsHelper
     end
   end
 
+  def supervisor_auth
+    unless user_signed_in? && current_user.supervisor?
+      store_previous_url
+      flash[:danger] = "You must sign in as supervisor to continue."
+      redirect_to supervisor_signin_path
+    end
+  end
+
   def store_previous_url
     session[:previous_url] = request.url if request.get?
   end
@@ -58,8 +66,22 @@ module SessionsHelper
     end
   end
 
+  def redirect_signed_in_supervisor
+    if user_signed_in? && user.supervisor?
+      flash[:danger] = "You are already signed in as supervisor."
+      redirect_to supervisor_root_path
+    end
+  end
+
   def current_user_auth
     redirect_to root_path, danger: "Access denied." unless current_user? params[:id]
+  end
+
+  def redirect_if_other_supervisors
+    if User.find(params[:id]).supervisor? && !current_user?(params[:id])
+      flash[:danger] = "You can't edit other supervisor's profile"
+      redirect_to supervisor_root_path
+    end
   end
 
   def remember(user)

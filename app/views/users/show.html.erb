@@ -16,24 +16,7 @@
       <div><label>Sign up at: </label>
       <%= @user.signed_up_at %></div>
       
-      <%course = @user.active_course_enrolled.course%>
-      <%unless course.nil?%>
-        <div class ="course">
-          Course: <b><%=truncate(course.name,length:30)%></b>
-          
-          <div class = "course-subject" style = "background-color: 
-            <%=course.course_subjects.unfinish_subjects.count>0 ? 
-            "silver" : "pink"%>">
-            <%=course.course_subjects.unfinish_subjects.count>0 ? "Finish" : "Training"%>
-          </div>
-
-          <div class ="pull-right">
-            start date:(<%= @user.active_course_enrolled.created_at.strftime "%d/%m/%Y"%>
-            -<%= (@user.active_course_enrolled.created_at+course.duration.day).strftime "%d/%m/%Y"%>)
-          </div>
-        </div>
-        <%= render course.course_subjects%>
-      <%end%>
+      <%= render "shared/user_current_progress" %>
     </div>
   </div>
 </div>
