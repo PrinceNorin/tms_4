@@ -6,8 +6,6 @@ class Course < ActiveRecord::Base
   has_many :course_subjects, dependent: :destroy
   has_many :subjects, through: :course_subjects
 
-  scope :enrolled_by, ->(user) do
-    enrolled_course_ids = "SELECT course_id FROM enrollments WHERE user_id = ?"
-    where "id IN (#{enrolled_course_ids})", user.id
-  end
+  validates_presence_of :name, :description, :user_id
+  validates_numericality_of :duration
 end

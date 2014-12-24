@@ -38,10 +38,31 @@
   }
 }
 
+#force_finish_course {
+  float: right;
+}
+
 .panel {
   @extend .panel;
   p {
     font-size: 1em;
+  }
+}
+
+.checkbox-group {
+  overflow: hidden;
+  label:first-child {
+    float: left;
+    width: 100%;
+  }
+  input[type=checkbox] {
+    float: left;
+  }
+  input[type=checkbox] + label {
+    float: left;
+    margin-left: 5px;
+    margin-right: 10px;
+    font-weight: normal;
   }
 }
 
