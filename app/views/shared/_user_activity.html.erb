@@ -1,1 +1,3 @@
-Helloo
+<h3 class = "page-header"><%= current_user.name.capitalize%>'s activities</h3>
+  <%@activities = current_user.activities.order("updated_at DESC")%>
+  <%= render @activities%>

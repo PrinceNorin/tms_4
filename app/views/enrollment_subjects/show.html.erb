@@ -1,11 +1,11 @@
 <% provide :title, "Course Subject" %>
 <div class="row">
-  <%=form_for [@course,@course_subject], html: { class: "form" } do |f| %>
-    <%=f.fields_for :course_subject_tasks do |f2|%>
-      <%course_subject_task=f2.object%>
-      <div class="col-md-3 tasks " style=" background-color:<%=course_subject_task.
+  <%=form_for [@course,@enrollment_subject], html: { class: "form" } do |f| %>
+    <%=f.fields_for :enrollment_subject_tasks do |f2|%>
+      <%enrollment_subject_task=f2.object%>
+      <div class="col-md-3 tasks " style=" background-color:<%=enrollment_subject_task.
       status? ? "silver": "lightgreen"%>">
-        <%=course_subject_task.task.name%>
+        <%=enrollment_subject_task.task.name%>
         <%=f2.hidden_field :task_id%>
         <br>
         <div class="form-group">
@@ -21,14 +21,19 @@
 </div>
 <div class="container">
   <h3>Basic Information</h3>
-  <h5>Start At:<%=@course_subject.created_at%></h5>
-  <h5>End At:Unknow</h5>
-  <h5>Status:<%=@course_subject.status? ? "Finish" : "Unfinish"%></h5>
+  <h5>Start At:<%=@enrollment_subject.started_at%></h5>
+  <%if @enrollment_subject.created_at != @enrollment_subject.updated_at && 
+    @enrollment_subject.status?%>
+    <h5>End At:<%=@enrollment_subject.ended_at%></h5>
+  <%else%>
+    <h5>End At:Unknow</h5>
+  <%end%>
+  <h5>Status:<%=@enrollment_subject.status? ? "Finish" : "Open"%></h5>
 </div>
 <div class="container">
   <h3>Instruction <label id="show_hide" class="btn">(hide)</label></h3>
   <div id="instruction">
-    <%=@course_subject.subject.instruction%>
+    <%=@enrollment_subject.subject.instruction%>
   </div>
 </div>
 

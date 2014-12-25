@@ -1,0 +1,33 @@
+<div class= "user-course">
+  <h5>
+    <b><%= truncate(enrollment_subject.subject.name, :length => 30)%></b>
+
+    <label class= "show_hide_status btn" style= "background-color:silver"
+    id= "show_hide_<%= enrollment_subject.id%>">Hide</label>
+
+    <div class= "course-subject-status" style= "background-color: 
+      <%= enrollment_subject.status? ? "silver" : "pink"%>">
+      <%= enrollment_subject.status? ? "Finish" : "Open"%>
+    </div>
+
+    <div class= "pull-right">
+      start date:(<%= enrollment_subject.created_at.strftime "%d/%m/%Y"%>
+      -<%= enrollment_subject.updated_at.strftime "%d/%m/%Y"%>)
+    </div>
+  </h5>
+  <div id= "course_subject_tasks_<%=enrollment_subject.id%>">
+    <%= render enrollment_subject.enrollment_subject_tasks%>
+  </div>
+</div>
+
+<script type= "text/javascript">
+  $("#show_hide_<%= enrollment_subject.id%>").on("click", function(){
+    if($("#show_hide_<%= enrollment_subject.id%>").text()=="Hide"){
+      $("#show_hide_<%= enrollment_subject.id%>").text("Show");
+      $("#course_subject_tasks_<%= enrollment_subject.id%>").hide();
+    }else if($("#show_hide_<%= enrollment_subject.id%>").text()=="Show"){
+      $("#show_hide_<%= enrollment_subject.id%>").text("Hide");
+      $("#course_subject_tasks_<%= enrollment_subject.id%>").show();
+    }
+  });
+</script>

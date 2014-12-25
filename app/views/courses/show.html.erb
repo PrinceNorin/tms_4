@@ -9,10 +9,10 @@
     <% if @course.course_subjects.any? %>    
       <h4>Subjects in Course</h4>
       <ul class="list-group">
-        <% @course.course_subjects.each do |course_subject| %>
+        <% @course.enrollment_subjects.each do |enrollment_subject| %>
           <li class="list-group-item">
-            <%= link_to course_subject.subject.name, course_course_subject_path(
-            course_subject.course,course_subject)%>
+            <%= link_to enrollment_subject.subject.name, course_enrollment_subject_path(
+            enrollment_subject.course,enrollment_subject)%>
           </li>
         <% end %>
       </ul>

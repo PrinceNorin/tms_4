@@ -12,5 +12,5 @@
       -<%= (@user.active_course_enrolled.created_at+course.duration.day).strftime "%d/%m/%Y"%>)
     </div>
   </div>
-  <%= render course.course_subjects%>
+  <%= render course.enrollment_subjects%>
 <% end %>

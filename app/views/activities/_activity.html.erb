@@ -1,0 +1,9 @@
+<div class="user_activity">
+  <div class="panel-body">
+    you <%=activity.temp_type%>
+    task <%=activity.task.name%>
+    at subject <%=activity.subject.name%>
+    in course <%=activity.course.name%>
+    about <%=time_ago_in_words(activity.updated_at)%> ago
+  </div>
+</div>
