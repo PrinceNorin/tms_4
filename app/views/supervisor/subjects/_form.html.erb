@@ -1,0 +1,15 @@
+<%= form_for [:supervisor, @subject], html: { class: "form" } do |f| %>
+  <%= render "shared/error_message", object: f.object %>
+  <div class="form-group"><%= f.label :name %>
+  <%= f.text_field :name, autofocus: true, class: "form-control" %></div>
+
+  <div class="form-group">
+    <%= f.fields_for :tasks do |task_field| %>
+      <%= render "task_field", f: task_field %>
+    <% end %>
+    <br />
+    <%= link_to_add_field "Add Task", f, :tasks %>
+  </div>
+
+  <div><%= f.submit "Save", class: "btn btn-primary form-control" %></div>
+<% end %>

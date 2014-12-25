@@ -3,5 +3,5 @@ class Task < ActiveRecord::Base
   has_many :activities, dependent: :destroy
   has_many :course_subject_tasks, dependent: :destroy
 
-  validates_presence_of :subject_id, :name
+  validates_presence_of :subject, :name
 end

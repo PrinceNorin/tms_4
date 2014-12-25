@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     resources :users
     resources :enrollments, only: [:index, :new, :update, :create, :destroy]
     resources :subjects do
-      resources :tasks, only: [:new, :create]
+      resources :tasks, only: [:new]
     end
   end
 
