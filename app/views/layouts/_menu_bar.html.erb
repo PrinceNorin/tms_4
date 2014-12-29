@@ -1,16 +1,15 @@
 <div class= "col-md-2">
   <ul class="menubar-nav">
-    <li>
-      <%=link_to "Courses",courses_path%>
-    </li>
-    <li>
-      <%=link_to "Users",users_path%>
-    </li>
-    <li>
-      <%=link_to "History","#"%>
-    </li>
-    <li>
-      <%=link_to "Report","#"%>
-    </li>
+    <% if current_user.supervisor? %>
+      <li><%= link_to "Courses", supervisor_courses_path %></li>
+      <li><%= link_to "Subject", supervisor_subjects_path %></li>
+      <li><%= link_to "Users", supervisor_users_path %></li>
+      <li><%= link_to "Enrollment", supervisor_enrollments_path %></li>
+    <% else %>
+      <li><%= link_to "Courses", courses_path %></li>
+      <li><%= link_to "Users", users_path %></li>
+      <li><%= link_to "History", "#" %></li>
+      <li><%= link_to "Report", "#" %></li>
+    <% end %>
   </ul>
 </div>
