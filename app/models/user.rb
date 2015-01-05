@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
     !enrollments.find_by_course_id(course.id).nil?
   end
 
-  def enrolled(course)
+  def find_enrollment_by_course(course)
     enrollments.find_by_course_id course.id
   end
 

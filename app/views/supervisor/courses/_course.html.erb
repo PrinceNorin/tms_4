@@ -1,0 +1,11 @@
+<tr>
+  <td><%= course.id %></td>
+  <td><%= link_to truncate(course.name), supervisor_course_path(course) %></td>
+  <td><%= course.users.count %></td>
+  <td><%= course.created_at.strftime "%h %d, %Y" %></td>
+  <td>
+    <%= link_to "Edit", edit_supervisor_course_path(course) %> | 
+    <%= link_to "Delete", supervisor_course_path(course),
+    data: { confirm: "Are you sure?", method: :delete } %>
+  </td>
+</tr>
