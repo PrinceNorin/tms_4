@@ -1,0 +1,18 @@
+<% if course.users.any? %>
+  <h4>Trainees in this course</h4>
+  <ul class="list-group">
+    <% course.users.each do |user| %>
+      <% unless current_user? user.id %>
+        <li class="list-group-item">
+          <%= gravatar_for user, size: 20 %>
+          <%= link_to user.name, supervisor_user_path(user) %>
+
+          <div id="force_finish_course">
+            <%= render "shared/course_finish_form", user: user, course: course %>
+          </div>
+          <div style="clear: both;"></div>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>
