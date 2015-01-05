@@ -1,0 +1,14 @@
+<% if user != current_user %>
+  <tr>
+    <td><%= user.id %></td>
+    <td><%= link_to user.name, supervisor_user_path(user) %></td>
+    <td><%= user.supervisor? ? "Supervisor" : "Trainee" %></td>
+    <td>
+      <% unless user.supervisor? %>
+        <%= link_to "Edit", edit_supervisor_user_path(user) %> | 
+        <%= link_to "Delete", supervisor_user_path(user),
+        data: { confirm: "Are you sure?", method: :delete } %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
