@@ -1,0 +1,16 @@
+<% provide :title, "Supervisor | Course Subject's Details" %>
+
+<h1 class="page-header">Course Subject's Details</h1>
+
+<div class="panel panel-primary">
+  <div class="panel-heading"><h3><%= @course_subject.subject.name %></h3></div>
+  <div id="course_subject_<%= @course_subject.id %>" class="pull-right" style="margin: 10px 15px;">
+    <%= render "shared/subject_finish_form", course_subject: @course_subject %>
+  </div>
+  <div class="panel-body">
+    <h4>Tasks</h4>
+    <ul class="list-group">
+      <%= render @course_subject.subject.tasks %>
+    </ul>
+  </div>
+</div>

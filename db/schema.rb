@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150106011850) do
+ActiveRecord::Schema.define(version: 20150106085944) do
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"
@@ -40,15 +40,15 @@ ActiveRecord::Schema.define(version: 20150106011850) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "duration"
     t.integer  "user_id"
+    t.integer  "duration"
   end
 
   create_table "enrollment_subject_tasks", force: true do |t|
     t.integer  "enrollment_subject_id"
     t.integer  "task_id"
     t.integer  "user_id"
-    t.boolean  "status"
+    t.boolean  "status",                default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -60,12 +60,11 @@ ActiveRecord::Schema.define(version: 20150106011850) do
     t.integer  "course_id"
     t.integer  "subject_id"
     t.integer  "user_id"
-    t.boolean  "status"
+    t.boolean  "status",        default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "enrollment_subjects", ["course_id", "subject_id"], name: "index_enrollment_subjects_on_course_id_and_subject_id", unique: true, using: :btree
   add_index "enrollment_subjects", ["course_id"], name: "index_enrollment_subjects_on_course_id", using: :btree
   add_index "enrollment_subjects", ["enrollment_id"], name: "index_enrollment_subjects_on_enrollment_id", using: :btree
   add_index "enrollment_subjects", ["subject_id"], name: "index_enrollment_subjects_on_subject_id", using: :btree

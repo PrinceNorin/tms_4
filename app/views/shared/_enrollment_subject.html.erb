@@ -16,7 +16,7 @@
     </div>
   </h5>
   <div id= "course_subject_tasks_<%=enrollment_subject.id%>">
-    <%= render enrollment_subject.enrollment_subject_tasks%>
+    <%= render partial: "shared/enrollment_subject_task", collection: enrollment_subject.enrollment_subject_tasks%>
   </div>
 </div>
 

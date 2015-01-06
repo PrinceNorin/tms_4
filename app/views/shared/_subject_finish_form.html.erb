@@ -1,5 +1,5 @@
-<%= form_for [:supervisor, course_subject],
+<%= form_for [:supervisor, course_subject.course, course_subject],
     html: { class: "pull-right" }, data: { remote: true } do |f| %>
-  <%= f.submit course_subject.reload.status? ? "Unfinish" : "Finish",
+  <%= f.submit course_subject.reload.status? ? "Stop" : "Start",
       class: "btn btn-sm btn-default", style: "margin-left: 10px; margin-top: -3px" %>
 <% end %>

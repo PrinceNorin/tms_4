@@ -8,9 +8,10 @@
     <% if @course.course_subjects.any? %>
       <h4>Subjects in Course</h4>
       <ul class="list-group">
-        <% @course.subjects.each do |subject| %>
+        <% @course.course_subjects.each do |course_subject| %>
+          <% subject = course_subject.subject %>
           <li class="list-group-item">
-            <%= link_to subject.name, supervisor_subject_path(subject) %>
+            <%= link_to subject.name, supervisor_course_course_subject_path(course_subject.course, course_subject) %>
           </li>
         <% end %>
       </ul>

@@ -7,7 +7,7 @@
           <%= gravatar_for user, size: 20 %>
           <%= link_to user.name, supervisor_user_path(user) %>
 
-          <div id="force_finish_course">
+          <div id="course_<%= course.id %>" class="pull-right">
             <%= render "shared/course_finish_form", user: user, course: course %>
           </div>
           <div style="clear: both;"></div>

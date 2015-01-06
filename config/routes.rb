@@ -22,8 +22,9 @@ Rails.application.routes.draw do
     get "signin" => "sessions#new", as: :signin
     get "signout" => "sessions#destroy", as: :signout
     
-    resources :courses
-    resources :course_subjects, only: :update
+    resources :courses do
+      resources :course_subjects, only: [:show, :update]
+    end
     resources :users
     resources :enrollments, only: [:index, :new, :update, :create, :destroy]
     resources :subjects do
