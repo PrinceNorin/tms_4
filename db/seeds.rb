@@ -38,10 +38,25 @@ Course.all.each do |course|
 end
 
 # create course_subject_tasks sample data
-CourseSubject.all.each do |course_subject|
-  course_subject.subject.tasks.each do |task|
-    course_subject.course_subject_tasks.create task_id: task.id, status: false
-  end
-end
+#CourseSubject.all.each do |course_subject|
+#  course_subject.subject.tasks.each do |task|
+#    course_subject.course_subject_tasks.create task_id: task.id, status: false
+#  end
+#end
 
 user.enrollments.create course_id: Course.first.id,status: false
+
+#create enrollment_subjects
+Enrollment.all.each do |enrollment|
+  enrollment.course.course_subjects.each do |course_subject|
+    enrollment.enrollment_subjects.create course_id:course_subject.course.id,
+    subject_id:course_subject.subject.id,user_id:enrollment.user_id,status:false
+  end
+end
+#create enrollment_subject_tasks
+EnrollmentSubject.all.each do |enrollment_subject|
+    enrollment_subject.subject.tasks.each do |task|
+    enrollment_subject.enrollment_subject_tasks.create task_id: task.id,
+    user_id: enrollment_subject.user.id, status: false
+  end
+end

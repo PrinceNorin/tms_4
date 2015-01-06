@@ -199,11 +199,11 @@ input[type='checkbox']:checked {
   width:4.5em;
 }
 
-.course-subject-task{
+.enrollment-subject-task{
   margin-top:2em;
 }
 
-.course-subject-task-status{
+.enrollment-subject-task-status{
   float:right;
   margin-right:4em;
   padding:3px 5px 3px 5px;
@@ -216,10 +216,22 @@ input[type='checkbox']:checked {
   margin-top:3em;
 }
 
-.course-subject{
+.course-subject,.enrollment-subject{
   float:right;
   margin-left:1em;
   padding:3px 5px 3px 5px;
   border-radius:3px;
   width:4.5em;
+}
+
+.user_activity,.user_report{
+  background: #abd;
+  margin:5px 0px 5px 0px;
+  border-radius:3px;
+  padding:3px 5px 3px 5px;
+}
+
+.course_title,.subject_title{
+  margin:5px 0px 5px 10px;
+  border-bottom:1px solid black;
 }

@@ -1,0 +1,8 @@
+<div class= "container enrollment-subject-task">
+  <%=truncate(enrollment_subject_task.task.name,:length=>40)%>
+
+  <div class= "enrollment-subject-task-status" style="background-color: 
+    <%= enrollment_subject_task.status? ? "silver" : "pink"%>">
+    <%= enrollment_subject_task.status? ? "Finish" : "Open"%>
+  </div>
+</div>

@@ -5,7 +5,7 @@ class Course < ActiveRecord::Base
   has_many :activities, dependent: :destroy
   has_many :course_subjects, dependent: :destroy
   has_many :subjects, through: :course_subjects
-  has_many :course_subject_tasks, through: :course_subjects
+  has_many :enrollment_subjects, dependent: :destroy
   
   after_save :create_course_subject_tasks
 

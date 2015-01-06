@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root "statics#home"
   get "about" => "statics#about", as: :about
   get "contact" => "statics#contact", as: :contact
-
+  
   resources :sessions, only: [:new, :create, :destroy]
   get "signin" => "sessions#new", as: :signin
   get "signout" => "sessions#destroy", as: :signout
@@ -11,10 +11,10 @@ Rails.application.routes.draw do
   get "signup" => "users#new", as: :signup
 
   resources :courses, only: [:index, :show] do
-    resources :course_subjects, only: [:show,:update]
+    resources :enrollment_subjects, only: [:show,:update]
   end
 
-  resources :enrollments, only: [:create]  
+  resources :enrollments, only: [:create]
 
   namespace :supervisor do
     root "courses#index"

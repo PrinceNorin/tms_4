@@ -1,4 +1,4 @@
 <div class = "course-subject" style = "background-color: 
-  <%= course.course_subjects.unfinish_subjects.count>0 ?  "silver" : "pink" %>">
-  <%= course.course_subjects.unfinish_subjects.count>0 ? "Training" : "Finished" %>
+  <%= course.enrollment_subjects.unfinish_subjects.count>0 ?  "pink" : "silver" %>">
+  <%= course.enrollment_subjects.unfinish_subjects.count>0 ? "Open" : "Finished" %>
 </div>
